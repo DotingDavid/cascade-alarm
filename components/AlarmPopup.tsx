@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Animated, Vibration } from 'react-native';
 import { Alarm } from '../types';
+import { playAlarmSound, stopAlarmSound } from '../utils/alarmAudio';
 
 interface AlarmPopupProps {
   alarm: Alarm;
@@ -40,17 +41,6 @@ export function AlarmPopup({ alarm, onDismiss, onSnooze }: AlarmPopupProps) {
       stopAlarmSound();
     };
   }, []);
-
-  const playAlarmSound = async () => {
-    // Skip custom sound for now - use system notification sound
-    // TODO: Add custom alarm.wav to assets folder
-    console.log('Alarm triggered - using system notification sound');
-  };
-
-  const stopAlarmSound = async () => {
-    // No-op for now - custom sound disabled
-    console.log('Stopping alarm sound');
-  };
 
   const handleDismiss = async () => {
     Vibration.cancel();

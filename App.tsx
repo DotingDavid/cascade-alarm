@@ -23,6 +23,7 @@ import {
   scheduleAlarmNotification,
   cancelAllNotifications,
 } from './utils/alarmScheduler';
+import { configureAudioMode } from './utils/alarmAudio';
 import { Alarm } from './types';
 
 // Show notifications even when app is in foreground
@@ -51,9 +52,10 @@ export default function App() {
     alarmsRef.current = alarms;
   }, [alarms]);
 
-  // Setup notifications on mount
+  // Setup notifications and audio on mount
   useEffect(() => {
     setupNotifications();
+    configureAudioMode();
 
     // Listen for notifications received while app is foregrounded
     notificationListener.current = Notifications.addNotificationReceivedListener(
