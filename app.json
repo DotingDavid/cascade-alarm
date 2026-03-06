@@ -20,7 +20,8 @@
         {
           "sounds": []
         }
-      ]
+      ],
+      "expo-av"
     ],
     "ios": {
       "supportsTablet": false,

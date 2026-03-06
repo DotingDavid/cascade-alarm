@@ -55,7 +55,9 @@ export default function App() {
   // Setup notifications and audio on mount
   useEffect(() => {
     setupNotifications();
-    configureAudioMode();
+    configureAudioMode().catch(err =>
+      console.warn('Audio mode configuration failed:', err)
+    );
 
     // Listen for notifications received while app is foregrounded
     notificationListener.current = Notifications.addNotificationReceivedListener(
